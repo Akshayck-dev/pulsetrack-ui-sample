@@ -95,6 +95,29 @@ tr.total td{font-weight:800;background:var(--accent-soft)}
   .clockbox{margin-left:0}
   .appname{width:110px}
 }
+/* role toggle */
+.roletoggle{display:flex;background:var(--grey-soft);border-radius:11px;padding:3px;gap:2px}
+.rt{border:0;background:transparent;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+.rt.active{background:#fff;color:var(--accent);box-shadow:0 1px 4px rgba(15,23,42,.14)}
+body.emp .tabs{display:none}
+/* login */
+.login-wrap{min-height:68vh;display:flex;align-items:center;justify-content:center;padding:48px 16px;background:radial-gradient(900px 480px at 15% 10%,#e0e7ff 0%,transparent 60%),radial-gradient(760px 480px at 90% 95%,#fae8ff 0%,transparent 55%);border-radius:20px;margin-top:6px}
+.login-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 26px 60px -22px rgba(79,70,229,.28);padding:36px 34px;width:100%;max-width:400px}
+.flabel{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin:14px 0 6px}
+.finput{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14.5px;color:var(--ink)}
+.finput:focus{outline:2px solid var(--accent-soft);border-color:var(--accent)}
+.btn-primary{width:100%;margin-top:20px;padding:12px;border:0;border-radius:11px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 10px 22px -10px rgba(79,70,229,.6)}
+.btn-primary:hover{filter:brightness(1.06)}
+.fhint{text-align:center;font-size:12px;color:var(--muted);margin-top:14px}
+/* employee hero */
+.emp-hero{background:linear-gradient(120deg,#4f46e5,#7c3aed 55%,#a855f7);border-radius:20px;color:#fff;padding:26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;box-shadow:0 20px 44px -18px rgba(79,70,229,.55);margin-bottom:18px}
+.emp-avatar{width:88px;height:88px;border-radius:26px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;flex-shrink:0}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:4px}
+.detail{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:9px 13px}
+.detail .k{font-size:10.5px;opacity:.72;text-transform:uppercase;letter-spacing:.6px;font-weight:700}
+.detail .v{font-size:13.5px;font-weight:700;margin-top:2px}
+.btn-ghost{align-self:flex-start;padding:9px 18px;border-radius:10px;border:1.5px solid rgba(255,255,255,.6);background:transparent;color:#fff;font-size:13px;font-weight:700;cursor:pointer}
+.btn-ghost:hover{background:rgba(255,255,255,.14)}
 </style>
 </head>
 <body>
@@ -107,6 +130,10 @@ tr.total td{font-weight:800;background:var(--accent-soft)}
       <button class="tab" data-s="timeline">Daily Timeline</button>
       <button class="tab" data-s="weekly">Weekly Report</button>
       <button class="tab" data-s="mystats">My Stats</button>
+    </div>
+    <div class="roletoggle">
+      <button class="rt active" data-role="admin">Admin</button>
+      <button class="rt" data-role="employee">Employee</button>
     </div>
     <div class="clockbox">
       <div class="d" id="dateLine">—</div>
@@ -187,6 +214,55 @@ tr.total td{font-weight:800;background:var(--accent-soft)}
     <div class="card">
       <h2 class="sec" style="font-size:16px;margin-bottom:12px">Top apps — this week</h2>
       <div class="applist" id="myAppList"></div>
+    </div>
+    <!-- LOGIN -->
+  <div class="screen" id="s-login">
+    <div class="login-wrap">
+      <div class="login-card">
+        <div class="logo" style="justify-content:center;margin-bottom:6px"><div class="logo-mark">◉</div>PulseTrack</div>
+        <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-bottom:8px">Employee Portal — sign in to view your activity</p>
+        <label class="flabel">Work email</label>
+        <input class="finput" type="email" value="arjun@company.com">
+        <label class="flabel">Password</label>
+        <input class="finput" type="password" value="password123">
+        <button class="btn-primary" id="loginBtn">Sign In</button>
+        <p class="fhint">Demo only — any credentials work.<br>Admins use the Admin view.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMPLOYEE DASHBOARD -->
+  <div class="screen" id="s-employee">
+    <div class="emp-hero">
+      <div class="emp-avatar">AK</div>
+      <div style="flex:1;min-width:240px">
+        <div style="font-size:22px;font-weight:800">Arjun Krishnan</div>
+        <div style="opacity:.85;font-size:13.5px;margin:2px 0 12px">UI/UX Designer · Design Team</div>
+        <div class="detail-grid">
+          <div class="detail"><div class="k">Employee ID</div><div class="v">PT-006</div></div>
+          <div class="detail"><div class="k">Email</div><div class="v">arjun@company.com</div></div>
+          <div class="detail"><div class="k">Phone</div><div class="v">+91 98470 12345</div></div>
+          <div class="detail"><div class="k">Reporting to</div><div class="v">Anjali Menon</div></div>
+          <div class="detail"><div class="k">Joined</div><div class="v">14 Mar 2024</div></div>
+          <div class="detail"><div class="k">Work mode</div><div class="v">Remote · IST</div></div>
+        </div>
+      </div>
+      <button class="btn-ghost" id="logoutBtn">Log out</button>
+    </div>
+    <div class="statrow">
+      <div class="stat"><div class="l">Today — total</div><div class="v">5h 02m</div><div class="s">clocked in 9:32 AM</div></div>
+      <div class="stat"><div class="l">Active time</div><div class="v">4h 31m</div><div class="s">90% activity</div></div>
+      <div class="stat"><div class="l">Idle / breaks</div><div class="v">31m</div><div class="s">incl. lunch break</div></div>
+      <div class="stat"><div class="l">This week</div><div class="v">32h 40m</div><div class="s">avg 6h 32m / day</div></div>
+    </div>
+    <div class="card">
+      <h2 class="sec" style="font-size:16px;margin-bottom:4px">My hours — this week</h2>
+      <p class="sub">Daily totals</p>
+      <div class="wkbar" id="empWkBar"></div>
+    </div>
+    <div class="card">
+      <h2 class="sec" style="font-size:16px;margin-bottom:12px">Top apps — this week</h2>
+      <div class="applist" id="empAppList"></div>
     </div>
   </div>
 
@@ -329,6 +405,40 @@ const WEEK=[
   });
   appRows([["Figma","18h 20m",56],["Photoshop","5h 10m",16],["Chrome","4h 05m",12],["Slack","2h 40m",8],["Canva","1h 30m",5]],"myAppList");
 })();
+
+/* ---------- role toggle + employee login ---------- */
+function showScreen(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0});
+}
+document.querySelectorAll(".rt").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".rt").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  const emp=b.dataset.role==="employee";
+  document.body.classList.toggle("emp",emp);
+  if(emp){ showScreen("s-login"); }
+  else{
+    document.querySelectorAll(".tab").forEach((t,i)=>t.classList.toggle("active",i===0));
+    showScreen("s-live");
+  }
+}));
+let empRendered=false;
+document.getElementById("loginBtn").addEventListener("click",()=>{
+  showScreen("s-employee");
+  if(!empRendered){
+    empRendered=true;
+    const days=["Mon","Tue","Wed","Thu","Fri"],hrs=[6.9,7.4,6.2,7.8,5.0],mx=Math.max(...hrs);
+    const el=document.getElementById("empWkBar");
+    hrs.forEach((h,i)=>{
+      const c=document.createElement("div");c.className="wkcol";
+      c.innerHTML=`<div class="hv">${h.toFixed(1)}h</div><div class="cb" style="height:${Math.round(h/mx*110)}px;${i===4?"background:linear-gradient(180deg,#34d399,#10b981)":""}"></div><div class="dl">${days[i]}</div>`;
+      el.appendChild(c);
+    });
+    appRows([["Figma","18h 20m",56],["Photoshop","5h 10m",16],["Chrome","4h 05m",12],["Slack","2h 40m",8],["Canva","1h 30m",5]],"empAppList");
+  }
+});
+document.getElementById("logoutBtn").addEventListener("click",()=>showScreen("s-login"));
 </script>
 </body>
 </html>
